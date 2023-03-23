@@ -11,25 +11,25 @@ set noswapfile            " Do not leve any backup files
 set mouse=a               " Enable mouse on all modes
 
 call plug#begin()
+
     Plug 'tpope/vim-sensible'
     Plug 'drewtempelmeyer/palenight.vim'
-    " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-    " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    " Plug 'junegunn/fzf.vim'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'tpope/vim-surround'
     Plug 'easymotion/vim-easymotion'
     Plug 'tpope/vim-commentary'
     Plug 'jiangmiao/auto-pairs'
-    " Plug 'ryanoasis/vim-devicons'
-	Plug 'rafi/awesome-vim-colorschemes'
+	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 	Plug 'vim-airline/vim-airline'
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'romgrk/barbar.nvim'
-	Plug 'nvim-neo-tree/neo-tree.nvim'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'nvim-neo-tree/neo-tree.nvim'
+	Plug 'MunifTanjim/nui.nvim'
+
 call plug#end()
 
 nnoremap <C-p> <cmd>Telescope find_files<cr>
@@ -41,7 +41,12 @@ vmap < <gv
 vmap > >gv
 
 " Setting Colortheme
-colorscheme jellybeans
+colorscheme tokyonight-night
+
+" Setting airline theme and config
+let g:airline_theme='deus'
+let g:airline_powerline_fonts = 1
+let g:Powerline_symbols = 'fancy'
 
 " Move Visual blocks with J an K
 vnoremap J :m '>+1<CR>gv=gv
@@ -54,7 +59,12 @@ augroup vimrc-remember-cursor-position
 augroup END
 
 " Use Ctrl-k Ctrl-k to open a sidebar with the list of files
-map <C-k><C-k> :NERDTreeToggle<cr>
+map <C-k> :Neotree<cr>
+imap <C-k> :Neotree<cr>
+vmap <C-k> :Neotree<cr>
+map <C-b> :Neotree close<cr>
+imap <C-b> :Neotree close<cr>
+vmap <C-b> :Neotree close<cr>
 
 " Some basic shortcuts
 map <C-s> :w<cr>
@@ -63,8 +73,8 @@ imap <C-s> <Esc>:w<cr>
 map <C-n> :tabnew<cr>
 imap <C-n> <Esc>:tabnew<cr>i
 
-map <C-w> :tabclose<cr>
-imap <C-w> <Esc>:tabclose<cr>
+map <C-w> :BufferClose<cr>
+imap <C-w> <Esc>:BufferClose<cr>
 
 map <C-z> u<cr>
 imap <C-z> <Esc>u<cr>
@@ -79,12 +89,11 @@ map <C-v> p<cr>
 imap <C-v> <Esc>p<cr>i
 vmap <C-v> p<cr>
 
-map <C-h> :tabprevious<cr>
-imap <C-h> <Esc>:tabprevious<cr>
+map <C-h> :BufferPrevious<cr>
+imap <C-h> <Esc>:BufferPrevious<cr>
 
-map <C-l> :tabnext<cr>
-imap <C-l> <Esc>:tabnext<cr>
-
+map <C-l> :BufferNext<cr>
+imap <C-l> <Esc>:BufferNext<cr>
 
 " Refresh the suggesctions
 inoremap <c-space> coc#refresh()
@@ -99,7 +108,7 @@ imap jj <Esc>
 " nnoremap <C-p> :Files<cr>
 " inoremap <C-p> :Files<cr>
 
-" Coc Intellisence
+nnoremap <leader>v <cmd>CHADopen<cr>" Coc Intellisence
 let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-json',
