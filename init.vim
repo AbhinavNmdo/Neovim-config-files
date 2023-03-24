@@ -25,16 +25,19 @@ call plug#begin()
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'romgrk/barbar.nvim'
 	Plug 'nvim-lua/plenary.nvim'
-	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'nvim-neo-tree/neo-tree.nvim'
-	Plug 'MunifTanjim/nui.nvim'
+	Plug 'nvim-telescope/telescope.nvim' " Fuzzy search plugin telescope
+    Plug 'vim-airline/vim-airline-themes' " Bottom bar airline plugin
+    Plug 'nvim-neo-tree/neo-tree.nvim' " Neotree plugin
+	Plug 'MunifTanjim/nui.nvim' " Essential for neotree
+	Plug 'yaegassy/coc-blade', {'do': 'yarn install --frozen-lockfile'} " Coc snippets
+	Plug 'sheerun/vim-polyglot' " Laravel blade format and syntax highlight
+    Plug 'terryma/vim-multiple-cursors' " Multicursor plugin
 
 call plug#end()
 
-nnoremap <C-p> <cmd>Telescope find_files<cr>
-inoremap <C-p> <cmd>Telescope find_files<cr>
-vnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <C-p> <cmd>Telescope find_files prompt_prefix=🔍<cr>
+inoremap <C-p> <cmd>Telescope find_files prompt_prefix=🔍<cr>
+vnoremap <C-p> <cmd>Telescope find_files prompt_prefix=🔍<cr>
 
 " Keep VisualMode after indent with > or <
 vmap < <gv
@@ -97,6 +100,9 @@ imap <C-l> <Esc>:BufferNext<cr>
 
 " Refresh the suggesctions
 inoremap <c-space> coc#refresh()
+
+" Formatting the document
+map <A-S-f> <Esc>:call CocAction('format')<cr>
 
 " For using system clipboard
 set clipboard+=unnamedplus
