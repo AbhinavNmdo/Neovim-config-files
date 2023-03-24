@@ -32,6 +32,7 @@ call plug#begin()
 	Plug 'yaegassy/coc-blade', {'do': 'yarn install --frozen-lockfile'} " Coc snippets
 	Plug 'sheerun/vim-polyglot' " Laravel blade format and syntax highlight
     Plug 'terryma/vim-multiple-cursors' " Multicursor plugin
+    Plug 'f-person/git-blame.nvim'
 
 call plug#end()
 
@@ -65,9 +66,6 @@ augroup END
 map <C-k> :Neotree<cr>
 imap <C-k> :Neotree<cr>
 vmap <C-k> :Neotree<cr>
-map <C-b> :Neotree close<cr>
-imap <C-b> :Neotree close<cr>
-vmap <C-b> :Neotree close<cr>
 
 " Some basic shortcuts
 map <C-s> :w<cr>
@@ -122,6 +120,8 @@ let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-phpls',
     \ 'coc-python',
+    \ 'coc-blade',
+    \ 'coc-git',
 	\ 'coc-diagnostic'
 \]
 
@@ -299,6 +299,3 @@ let g:fzf_action = {
 \ 'enter': 'tab split',
 \ 'ctrl-x': 'split',
 \ 'ctrl-v': 'vsplit' }
-
-" Open file in new tab using nerdtree
-let NERDTreeMapOpenInTab='<ENTER>'
