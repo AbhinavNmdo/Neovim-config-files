@@ -27,5 +27,6 @@ map("n", "<A-l>", "]b")
 map("n", "<A-h>", "[b")
 map("n", "<C-p>", "<Space>ff")
 map("n", "<C-s>", "<Space>w")
+map("n", "<C-k>", "<cmd>Neotree<CR>")
 
 require("astronvim.utils").conditional_func(astronvim.user_opts("polish", nil, false), true)
