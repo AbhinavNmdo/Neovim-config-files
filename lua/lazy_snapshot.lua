@@ -51,4 +51,9 @@ return {
   { "neoclide/coc.nvim" },
   { "yaegassy/coc-blade" },
   { "sheerun/vim-polyglot" },
+  { "zivyangll/git-blame.vim" },
+  { "jiangmiao/auto-pairs" },
+  { "editorconfig/editorconfig-vim" },
+  { "tpope/vim-surround" },
+  { "easymotion/vim-easymotion" }
 }

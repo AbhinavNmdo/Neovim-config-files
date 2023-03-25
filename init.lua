@@ -15,4 +15,17 @@ if astronvim.default_colorscheme then
   end
 end
 
+local function map(mode, lhs, rhs, opts)
+  local options = { noremap=true, silent=true }
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+map("n", "<A-l>", "]b")
+map("n", "<A-h>", "[b")
+map("n", "<C-p>", "<Space>ff")
+map("n", "<C-s>", "<Space>w")
+
 require("astronvim.utils").conditional_func(astronvim.user_opts("polish", nil, false), true)
