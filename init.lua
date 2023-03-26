@@ -15,18 +15,24 @@ if astronvim.default_colorscheme then
   end
 end
 
-local function map(mode, lhs, rhs, opts)
-  local options = { noremap=true, silent=true }
-  if opts then
-    options = vim.tbl_extend('force', options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+local keyset = vim.keymap.set
 
-map("n", "<A-l>", "]b")
-map("n", "<A-h>", "[b")
-map("n", "<C-p>", "<Space>ff")
-map("n", "<C-s>", "<Space>w")
-map("n", "<C-k>", "<cmd>Neotree<CR>")
+keyset("n", "<A-l>", "]b", {silent = true, noremap = false})
+keyset("n", "<A-h>", "[b", {silent = true})
+keyset("n", "<C-p>", "<cmd>Telescope fd<CR>", {silent = true})
+keyset("i", "<C-p>", "<cmd>Telescope fd<CR>", {silent = true})
+
+keyset("n", "<C-s>", "<cmd>w<CR>", {silent = true})
+keyset("i", "<C-s>", "<cmd>w<CR><Esc>i", {silent = true})
+
+keyset("n", "<C-k>", "<cmd>Neotree<CR>", {silent = true})
+keyset("i", "<C-k>", "<cmd>Neotree<CR><Esc>", {silent = true})
+
+keyset("n", "<A-j>", "<cmd>m +1<CR>", {silent = true})
+keyset("n", "<A-k>", "<cmd>m -2<CR>", {silent = true})
+keyset("n", "<A-s>", "<cmd>t.<CR>", {silent = true})
+
+keyset("n", "<C-q>", "<leader-c>", {silent = true})
+keyset("i", "<S><CR>", "<Esc>o", {silent = true})
 
 require("astronvim.utils").conditional_func(astronvim.user_opts("polish", nil, false), true)
