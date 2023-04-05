@@ -119,4 +119,12 @@ return {
       show_current_context = true,
     },
   },
+  {
+    "tpope/vim-surround",
+    event = "VeryLazy",
+  },
+  {
+    "easymotion/vim-easymotion",
+    event = "VeryLazy",
+  },
 }

@@ -1,7 +1,18 @@
 return {
   "neoclide/coc.nvim",
-  dependencies = { "yaegassy/coc-blade", "sheerun/vim-polyglot" },
+  event = "VeryLazy",
+  dependencies = {
+    {
+      "yaegassy/coc-blade", 
+      event = "VeryLazy"
+    },
+    {
+      "sheerun/vim-polyglot",
+      event = "VeryLazy"
+    }
+  },
   cmd = "CocInstall",
+  enabled = true,
   config = function()
     -- Some servers have issues with backup files, see #649
     vim.opt.backup = false
