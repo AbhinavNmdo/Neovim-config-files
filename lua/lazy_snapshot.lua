@@ -51,4 +51,5 @@ return {
   { "jwalton512/vim-blade" },
   { "tpope/vim-surround" },
   { "easymotion/vim-easymotion" },
+  { "mg979/vim-visual-multi" },
 }
